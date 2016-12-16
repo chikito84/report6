@@ -30,17 +30,21 @@ public class LivingThing {
         return hitPoint;
     }
 
+    public int getAttack(){
+        return attack;
+    }
+
     public void attack(LivingThing opponent){
         if(dead == false) {
             int damage = (int) (Math.random() * attack);
-            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, opponent.getName(), damage);
+            System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, opponent.name, damage);
             opponent.wounded(damage);
         }
     }
 
     public void wounded(int damage){
         hitPoint -= damage;
-        if( hitPoint < 0 ) {
+        if( hitPoint < 1 ) {
             dead = true;
             System.out.printf("%sは倒れた。\n", name);
         }
